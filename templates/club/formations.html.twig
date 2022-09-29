@@ -1,0 +1,37 @@
+<img src="{{asset('img/me.jpg')}}" alt="moi" height="300px" width="250px">
+
+<h1> la liste des formation de la classe {{classe}} dans la classe {{salle}}</h1>
+{% if listeFormation is empty %}
+<h6> Tab vide</h6>
+{% else %}
+<table >
+<tr>
+<td>Ref </td>
+<td>Titre </td>
+<td>Description </td>
+<td>Nombre de participants </td>
+<td> Participer</td>
+</tr>
+<tr>
+
+
+
+{% for f in listeFormation %}
+
+<tr>
+<td> {{f.ref}} </td>
+<td> {{f.Titre| upper}} </td>
+<td> {{f.Description}} </td>
+<td> {{f.nb_participants}} </td>
+
+<td>{% if f.nb_participants==0 %}
+<a href="{{path('app_reservation')}}"> Participer</a>
+{% else %}complet
+{% endif %}</td>
+
+{% endfor %}
+{%endif%}
+</tr>
+</table>
+{% set x=10 %}
+x= {{x}}
