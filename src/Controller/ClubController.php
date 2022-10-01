@@ -27,18 +27,16 @@ class ClubController extends AbstractController
             'date_debut'=>'12/06/2020', 'date_fin'=>'19/06/2020',
             'nb_participants'=>19) ,
             array('ref'=>'form177','Titre'=>'Formation SOA' ,
-            'Description'=>'formation
-            theorique','date_debut'=>'03/12/2020','date_fin'=>'10/12/2020',
+            'Description'=>'formation theorique','date_debut'=>'03/12/2020','date_fin'=>'10/12/2020',
             'nb_participants'=>0),
             array('ref'=>'form178','Titre'=>'Formation Angular' ,
-            'Description'=>'formation
-            theorique','date_debut'=>'10/06/2020','date_fin'=>'14/06/2020',
+            'Description'=>'formation theorique','date_debut'=>'10/06/2020','date_fin'=>'14/06/2020',
             'nb_participants'=>12));
         return $this->render("club/formations.html.twig" ,array("classe"=>$v1,"salle"=>$v2,"listeFormation"=>$formations));
     }
     #[Route('/reservation', name: 'app_reservation')]
     public function reservationFormation (){
         //return new Response("réservation!");
-        return $this-> render("club/detail.html.twig");
+        return $this->render("club/detail.html.twig",array());
     }
 }
