@@ -44,7 +44,7 @@ class ClassroomController extends AbstractController
 
 
     #[Route('/addClassroomForm', name: 'addClassroomForm')]
-    public function addStudentForm(Request  $request,ManagerRegistry $doctrine)
+    public function addClassroomForm(Request  $request,ManagerRegistry $doctrine)
     {
         $classroom= new  ClassRoom();
         $form= $this->createForm(ClassRoomType::class,$classroom);
@@ -82,8 +82,10 @@ class ClassroomController extends AbstractController
     {
         $classroom= $repository->find($id);
         $em= $doctrine->getManager();
+        
         $em->remove($classroom);
         $em->flush();
         return $this->redirectToRoute("addClassroomForm");
     }
+
 }
