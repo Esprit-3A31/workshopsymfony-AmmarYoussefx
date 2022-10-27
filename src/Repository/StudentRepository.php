@@ -38,7 +38,23 @@ class StudentRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function sortByNCE()
+    {
+        $qb= $this->createQueryBuilder('s')->orderBy('s.nce','DESC');
+        return $qb->getQuery()->getResult();
+    }
 
+    public function topStudent(){
+        $entityManager= $this->getEntityManager();
+        $query=$entityManager->createQuery("SELECT s FROM APP\Entity\Student s WHERE s.Moyenne >= 15");
+        return $query->getResult();
+    }
+    public  function getStudentByClassroom($id){
+        $qb=$this->createQueryBuilder('s')->join('s.classRoom','c')->addSelect('s')->where('c.id=:id')->setParameter('id',$id);
+        return $qb->getQuery()->getResult();
+
+
+    }
 //    /**
 //     * @return Student[] Returns an array of Student objects
 //     */
